@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+    {% block content %}
+		<ul>
+            <li><a href="/">Index</a></li>
+            <li><a href="/upload">Upload</a></li>
+		</ul>
+		
+		<form method="POST" action="/upload/proses" enctype="multipart/form-data">
+			<label>The file :</label>
+			<input type="file" name="file" oninput="filesize(this);" required />
+			<br />
+			<button type="submmit">Submit</button>
+		</form>
+		<script>
+
+			function filesize(elem){
+			  document.cookie = `filesize=${elem.files[0].size}`
+			}
+		  
+		</script>
+	{% endblock %}
